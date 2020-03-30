@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="referrer" content="no-referrer" />
+    <title>B站排行榜</title>
+</head>
+<body>
+<div class="container">
+    <h2>B站----排行榜</h2>
+    <div th:each="rank:${ranks}" class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img th:src="${rank.pic}" class="card-img" alt="icon">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${rank.author}"></h5>
+                    <p class="card-text" th:text="${rank.title}"></p>
+                    <a href="#" class="btn btn-primary" th:text="${rank.duration}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

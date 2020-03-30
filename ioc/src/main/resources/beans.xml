@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.soft1851.spring.ioc.config"/>
+<!--初学Hello-->
+    <bean id="hello" class="com.soft1851.spring.ioc.entity.Hello">
+</bean>
+<!--    phone-->
+    <bean id="phone" class="com.soft1851.spring.ioc.entity.Phone">
+        <constructor-arg name="brand" value="iPhone11"/>
+        <constructor-arg name="price" value="9999.99"/>
+    </bean>
+<!--    UserLogin-->
+    <bean id="user" class="com.soft1851.spring.ioc.entity.User">
+        <property name="account" value="admin"></property>
+        <property name="password" value="111"></property>
+    </bean>
+
+    <bean id="userLogin" class="com.soft1851.spring.ioc.entity.UserLogin">
+        <property name="admin" ref="user"></property>
+    </bean>
+<!--    list、map例子-->
+    <bean id="student" class="com.soft1851.spring.ioc.entity.Student">
+        <property name="name" value="Crihero"/>
+        <property name="age" value="21"/>
+        <property name="phones">
+            <list>
+                <bean id="phone1" class="com.soft1851.spring.ioc.entity.Phone" p:brand="iphone11" p:price="10666"/>
+                <bean id="phone2" class="com.soft1851.spring.ioc.entity.Phone" p:brand="iphone XR" p:price="8888"/>
+            </list>
+        </property>
+        <property name="scores">
+            <map>
+                <entry key="高等数学" value="88" />
+                <entry key="java" value="93" />
+                <entry key="高职英语" value="88" />
+            </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>掘金--话题页</title>
+</head>
+<body>
+<div class="container">
+    <h2>掘金---全部话题</h2>
+    <div th:each="topic:${topics}" class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img th:src="${topic.topicIcon}" class="card-img" alt="icon">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${topic.topicName}"></h5>
+                    <p class="card-text" th:text="${topic.description}"></p>
+                    <a href="#" class="btn btn-primary" th:text="${topic.msgCount}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

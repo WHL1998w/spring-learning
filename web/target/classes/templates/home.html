@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>主页</title>
+    <style>
+        .cover{
+            width: 110px;
+            height: 150px;
+            border-radius: 3px;
+        }
+        .text-blue{
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="https://book.douban.com/tag/%E6%95%A3%E6%96%87" style="color: brown">豆瓣读书</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">购书单 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">电子图书</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    2019年度榜单
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container">
+    <h2>豆瓣图书标签: 散文</h2>
+    <hr>
+    <div th:each="book:${bookList}">
+        <div class="row">
+            <div class="col-2">
+                <img th:src="${book.cover}" class="cover">
+            </div>
+            <div class="col-10">
+                <h5 th:text="${book.name} " class="text-blue">图书名称</h5>
+                <p th:text="${book.price}">图书价格</p>
+                <p th:text="${book.author}">作者</p>
+                <p th:text="${book.des}"></p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

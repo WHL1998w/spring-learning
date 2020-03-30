@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="referrer" content="no-referrer" />
+    <title>掘金----小册</title>
+    <style>
+        .back-white{
+            background-color: white;
+        }
+        .back-gray{
+            background-color: rgb(244, 245, 245);
+        }
+        .container{
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid gray;
+        }
+        .card-book{
+            width: 100%;
+            margin: 0 auto;
+            height: 220px;
+            padding: 20px 20px 20px 20px;
+            border-bottom: 1px solid lightgray;
+        }
+        .show{
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+        }
+        .card-img{
+            width: 60%;
+            height: 80%;
+        }
+        .desc{
+            font-size: 14px;
+            color: #71777c;
+        }
+        .text-orange{
+            color: rgb(237, 123, 17);
+        }
+    </style>
+</head>
+<body class="back-gray">
+<nav class="navbar navbar-expand-lg navbar-light bg-light back-white">
+    <img class="navbar-brand" src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg"/>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">沸点</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">话题</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">小册</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索掘金" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container">
+    <div th:each="book:${books}" class="card-book back-white">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <img th:src="${book.img}" class="card-img show" alt="icon">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${book.title}"></h5>
+                    <p class="card-text desc" th:text="${book.desc}"></p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="card-text" th:text="${book.userName}"></p>
+                        </div>
+                        <div class="col-md-10">
+                            <p class="card-text desc" th:text="${book.profile}"></p>
+                        </div>
+                    </div>
+
+                    <h4 th:text="${book.price}" class="text-orange"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
