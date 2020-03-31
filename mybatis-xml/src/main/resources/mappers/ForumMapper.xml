@@ -5,15 +5,12 @@
     <insert id="insert" parameterType="com.soft1851.spring.mybatis.entity.Forum">
         INSERT INTO t_forum (forum_name) VALUES (#{forumName})
     </insert>
-
     <delete id="delete" parameterType="int">
         DELETE FROM t_forum WHERE forum_id = #{id}
     </delete>
-
     <update id="update" parameterType="com.soft1851.spring.mybatis.entity.Forum">
         UPDATE t_forum SET forum_name = #{forumName} WHERE forum_id = #{forumId}
     </update>
-
     <!--如果mybatis的配置文件开启了驼峰式转换，这里可以不做处理-->
     <select id="selectAll" resultType="com.soft1851.spring.mybatis.entity.Forum">
         SELECT * FROM t_forum

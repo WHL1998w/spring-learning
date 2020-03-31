@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1851.spring.mybatis.mapper.ClazzVoMapper">
+    <select id="getClazzStudent" parameterType="int" resultType="ClazzVo">
+        SELECT t1.*,t2.* FROM t_clazz t1
+                                  LEFT JOIN t_student t2
+                                            ON t1.clazz_id = t2.clazz_id
+        WHERE t1.clazz_id = #{clazzId}
+    </select>
+    <resultMap id="clazzMap" type="map">
+    <result property="clazzId" column="clazz_id"  />
+    <result property="clazzName" column="clazz_name"/>
+    <result property="studentId"  column="student_id"/>
+    <result property="studentName" column="student_name"/>
+</resultMap>
+<select id="getClazzStudent1" parameterType="int" resultMap="clazzMap">
+SELECT  t1.clazz_id,t1.clazz_name,t2.student_id,t2.student_name
+FROM t_clazz t1
+         LEFT JOIN  t_student t2
+                    ON  t1.clazz_id =t2.clazz_id
+WHERE  t1.clazz_id=#{clazzId}
+</select>
+
+</mapper>
